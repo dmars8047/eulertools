@@ -45,11 +45,15 @@ func GetPremise(num int) string {
 
 	buffer := make([]byte, 1024)
 
-	i := 1
 	text := ""
-	for i != 0 {
-		i, _ = body.Read(buffer)
-		text += string(buffer)
+	for true {
+		i, _ := body.Read(buffer)
+
+		if i != 0 {
+			text += string(buffer)
+		} else {
+			break
+		}
 	}
 
 	return removeHtmlTag(text)
@@ -58,4 +62,8 @@ func GetPremise(num int) string {
 func PrintPremise(num int) {
 	fmt.Println("\nProblem Premise:")
 	fmt.Print(GetPremise(num))
+}
+
+func main() {
+	PrintPremise(1)
 }

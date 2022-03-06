@@ -56,6 +56,6 @@ func GetPremise(num int) string {
 }
 
 func PrintPremise(num int) {
-	fmt.Println("Problem Premise:")
+	fmt.Println("\nProblem Premise:")
 	fmt.Print(GetPremise(num))
 }

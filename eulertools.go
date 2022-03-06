@@ -26,7 +26,7 @@ func removeHtmlTag(in string) string {
 	return in
 }
 
-func GetPremise(num int) {
+func GetPremise(num int) string {
 
 	client := &http.Client{}
 
@@ -52,6 +52,10 @@ func GetPremise(num int) {
 		text += string(buffer)
 	}
 
-	fmt.Println("\nProblem Premise:")
-	fmt.Println(removeHtmlTag(text))
+	return removeHtmlTag(text)
+}
+
+func PrintPremise(num int) {
+	fmt.Println("Problem Premise:")
+	fmt.Print(GetPremise(num))
 }

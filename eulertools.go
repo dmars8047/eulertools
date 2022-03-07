@@ -26,13 +26,13 @@ func removeHtmlTag(in string) string {
 	return in
 }
 
-func GetPremise(num int) string {
+func GetPremise(num int, agentName string) string {
 
 	client := &http.Client{}
 
 	url := fmt.Sprintf("https://projecteuler.net/minimal=%d", num)
 	req, err := http.NewRequest("GET", url, nil)
-	req.Header.Add("User-Agent", "DSM-Reader/1.0")
+	req.Header.Add("User-Agent", agentName)
 	req.Header.Add("Accept", "text/plain, text/html")
 
 	if err != nil {
@@ -59,11 +59,7 @@ func GetPremise(num int) string {
 	return removeHtmlTag(text)
 }
 
-func PrintPremise(num int) {
+func PrintPremise(num int, agentName string) {
 	fmt.Println("\nProblem Premise:")
-	fmt.Print(GetPremise(num))
-}
-
-func main() {
-	PrintPremise(1)
+	fmt.Print(GetPremise(num, agentName))
 }
